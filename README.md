@@ -1,6 +1,6 @@
 # Bookstore
 
 admin login 
-username mohamed
+username: mohamed
 password: Pa$$w0rd
 
