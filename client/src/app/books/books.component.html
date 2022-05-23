@@ -1,0 +1,11 @@
+<div class="row ">
+    <div class="col">
+        <div class="row row-cols-5 ">
+            <ng-container *ngFor="let b of books">
+                <div class="col">
+                    <app-book-cards [book]="b"></app-book-cards>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

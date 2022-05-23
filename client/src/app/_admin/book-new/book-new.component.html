@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-6">
+       <ng-container >
+        <form #editForm="ngForm" (ngSubmit)="save(editForm.value)">
+            <div class="form-group mb-3">
+                <label for="bookName">Book Name</label>
+                <input #bookName="ngModel" [(ngModel)]="book.bookName" name="bookName" id="bookName" type="text" class="form-control" required>
+                <div *ngIf="bookName.invalid && (bookName.dirty || bookName.touched)" class="alert alert-danger">Book Name is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input #price="ngModel" [(ngModel)]="book.price" name="price" id="price" type="number" class="form-control" required [min]="0">
+                </div>
+                <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+                    <div *ngIf="price.errors?.['required']">Price is required.</div>
+                    <div *ngIf="price.errors?.['min']">Price should be 0 or higher.</div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="author">Author</label>
+                <input #author="ngModel" [(ngModel)]="book.author" name="author" id="author" type="text" class="form-control" required>
+                <div *ngIf="author.invalid && (author.dirty || author.touched)" class="alert alert-danger">Author is required.</div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="imageUlr">ImageUrl</label>
+                <input #imageUlr="ngModel" [(ngModel)]="book.imageUlr" name="imageUlr" id="imageUlr" type="text" class="form-control" required url >
+                <div *ngIf="imageUlr.invalid && (imageUlr.dirty || imageUlr.touched)" class="alert alert-danger">
+                    <div *ngIf="imageUlr.errors?.['required']">ImageUrl is required.</div>
+                    <div *ngIf="imageUlr.errors?.['url']">ImageUrl is required.</div>
+                </div>
+            </div>
+            <button [disabled]="!editForm.dirty" class="btn btn-primary me-2">Save</button>
+        </form>
+       </ng-container>
+    </div>
+    <div class="col-md-6">
+        <app-book-cards [book]="book" [show-action]="false"></app-book-cards>
+    </div>
+</div>

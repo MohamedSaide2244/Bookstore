@@ -1,0 +1,12 @@
+<div *ngIf="book" class="card">
+    <img [src]="book.imageUlr" class="card-img-top "  alt="{{book.bookName}}">
+    <div class="card-body">
+        <h6 class="card-title">{{book.bookName}}</h6>
+        <p class="card-text">{{book.price | currency:'USD':true}}</p>
+    </div> 
+    <div class="card-footer d-grid ">
+        <button *ngIf="showActions" 
+        (click)="addToCart(book)"
+        class="btn btn-primary ">Add to Cart</button>
+    </div>
+</div>
